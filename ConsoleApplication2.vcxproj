@@ -129,7 +129,9 @@
   <ItemGroup>
     <ClCompile Include="BSNode.cpp" />
     <ClCompile Include="ConsoleApplication2.cpp" />
+    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="printTreeToFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="printTreeToFile.pdb" />
@@ -139,6 +141,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BSNode.h" />
+    <ClInclude Include="BSTNode.hpp" />
+    <ClInclude Include="Functions.hpp" />
     <ClInclude Include="printTreeToFile.h" />
   </ItemGroup>
   <ItemGroup>

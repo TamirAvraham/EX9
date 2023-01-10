@@ -1,37 +1,32 @@
-#include "BSNode.h"
+#include "Functions.hpp"
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <windows.h>
-#include "printTreeToFile.h"
 
-using std::cout;
-using std::endl;
 
-int main()
-{
-	BSNode* bs = new BSNode("6");
-	bs->insert("2");
-	bs->insert("8");
-	bs->insert("3");
-	bs->insert("5");
-	bs->insert("9");
-	bs->insert("6");
 
-	
-	cout << "Tree height: " << bs->getHeight() << endl;
-	cout << "depth of node with 5 depth: " << bs->getLeft()->getRight()->getRight()->getDepth(*bs) << endl;
-	cout << "depth of node with 3 depth: " << bs->getLeft()->getRight()->getDepth(*bs) << endl;
+int main() {
 
-	
-	std::string textTree = "BSTData.txt";
-	printTreeToFile(bs, textTree);
+	//check compare
+	std::cout << "correct print is 1 -1 0" << std::endl;
+	std::cout << compare<double>(1.0, 2.5) << std::endl;
+	std::cout << compare<double>(4.5, 2.4) << std::endl;
+	std::cout << compare<double>(4.4, 4.4) << std::endl;
 
-	system("BinaryTree.exe");
+	//check bubbleSort
+	std::cout << "correct print is sorted array" << std::endl;
+
+	const int arr_size = 5;
+	double doubleArr[arr_size] = { 1000.0, 2.0, 3.4, 17.0, 50.0 };
+	bubbleSort<double>(doubleArr, arr_size);
+	for (int i = 0; i < arr_size; i++) {
+		std::cout << doubleArr[i] << " ";
+	}
+	std::cout << std::endl;
+
+	//check printArray
+	std::cout << "correct print is sorted array" << std::endl;
+	printArray<double>(doubleArr, arr_size);
+	std::cout << std::endl;
+
 	system("pause");
-	remove(textTree.c_str());
-	delete bs;
-
-	return 0;
+	return 1;
 }
-

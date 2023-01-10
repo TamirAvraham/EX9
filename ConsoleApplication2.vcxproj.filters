@@ -24,6 +24,12 @@
     <ClCompile Include="BSNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="printTreeToFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="printTreeToFile.pdb" />
@@ -36,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BSNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BSTNode.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
