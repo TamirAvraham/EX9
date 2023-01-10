@@ -34,5 +34,6 @@ private:
 
 	int _count; //for question 1 part B
 	int getCurrNodeDistFromInputNode(const BSNode* node) const; //auxiliary function for getDepth
-
+	int getHeight(const BSNode* root) const;
+	
 };
