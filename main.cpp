@@ -3,32 +3,26 @@
 #include "BSTNode.hpp"
 
 template<class T>
-GenericBSNode<T>* sortedArrayToBST(T arr[], T start, T end)
+GenericBSNode<T>* sortedArrayToBST(T arr[], int len)
 {
-   
-    if (start > end)
-        return NULL;
-
-    
-    int mid = (start + end) / 2;
-    GenericBSNode<T>* root = new GenericBSNode<T>(arr[mid]);
-
-    
-    root->getLeft() = sortedArrayToBST(arr, start,mid - 1);
-
-   
-    root->getRight() = sortedArrayToBST(arr, mid + 1, end);
-
-    return root;
+    GenericBSNode<T>* ret = new GenericBSNode<T>(arr[0]);
+    for (int i = 1; i < len; i++)
+    {
+        ret->insert(arr[i]);
+    }
+    return ret;
 }
 int main() {
 
 	
     int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
+    std::string arrString[] = { "a","c","b","d" };
     int n = sizeof(arr) / sizeof(arr[0]);
-
+    int arrStringLen = sizeof(arrString) / sizeof(arrString[0]);
     
-    auto bst = sortedArrayToBST(arr, 0, n - 1);
+    auto bst = sortedArrayToBST(arr,n);
     bst->printNodes();
+    auto bstS = sortedArrayToBST(arrString, arrStringLen);
+    bstS->printNodes();
 	return 1;
 }

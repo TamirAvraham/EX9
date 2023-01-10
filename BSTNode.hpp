@@ -51,11 +51,11 @@ GenericBSNode<T>::GenericBSNode(const GenericBSNode<T>& other) :_data(other._dat
 		_data = other.getData();
 		_count = other.getCount();
 		if (other.getLeft() != nullptr)
-			_left = new BSNode(*other.getLeft());
+			_left = new GenericBSNode(*other.getLeft());
 		else
 			_left = nullptr;
 		if (other.getRight() != nullptr)
-			_right = new BSNode(*other.getRight());
+			_right = new GenericBSNode(*other.getRight());
 		else
 			_right = nullptr;
 	}
@@ -73,7 +73,7 @@ void GenericBSNode<T>::insert(T value)
 	{
 		if (_left == nullptr)
 		{
-			_left = new BSNode(value);
+			_left = new GenericBSNode(value);
 			return;
 		}
 		_left->insert(value);
@@ -82,7 +82,7 @@ void GenericBSNode<T>::insert(T value)
 	{
 		if (_right == nullptr)
 		{
-			_right = new BSNode(value);
+			_right = new GenericBSNode(value);
 			return;
 		}
 		_right->insert(value);
@@ -97,7 +97,7 @@ template<class T>
 GenericBSNode<T>& GenericBSNode<T>::operator=(const GenericBSNode<T>& other)
 {
 
-	*this = BSNode(other);
+	*this = GenericBSNode(other);
 	return *this;
 }
 template<class T>
@@ -181,7 +181,7 @@ int GenericBSNode<T>::getCurrNodeDistFromInputNode(const GenericBSNode<T>* node)
 	else if (node->_data == _data) {
 		return 0;
 	}
-	BSNode* goTo = _data < node->_data ? node->_left : node->_right;
+	GenericBSNode* goTo = _data < node->_data ? node->_left : node->_right;
 
 	return getCurrNodeDistFromInputNode(goTo) + 1;
 }
