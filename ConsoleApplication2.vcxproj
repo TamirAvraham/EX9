@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BSNode.cpp" />
-    <ClCompile Include="ConsoleApplication2.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="printTreeToFile.cpp" />

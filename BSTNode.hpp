@@ -1,50 +1,50 @@
 #pragma once
 
 template<class T>
-class BSNode
+class GenericBSNode
 {
 public:
-	BSNode(T data);
-	BSNode(const BSNode& other);
+	GenericBSNode(T data);
+	GenericBSNode(const GenericBSNode<T>& other);
 
-	~BSNode();
+	~GenericBSNode();
 
 	void insert(T value);
-	BSNode& operator=(const BSNode& other);
+	GenericBSNode& operator=(const GenericBSNode& other);
 
 	bool isLeaf() const;
 	T getData() const;
 	int getCount() const;
-	BSNode<T>* getLeft() const;
-	BSNode<T>* getRight() const;
+	GenericBSNode<T>* getLeft() const;
+	GenericBSNode<T>* getRight() const;
 
 
 	bool search(T val) const;
 
 	int getHeight() const;
-	int getDepth(const BSNode<T>& root) const;
+	int getDepth(const GenericBSNode<T>& root) const;
 
 	void printNodes() const; //for question 1 part C
 
 private:
 	T _data;
-	BSNode<T>* _left;
-	BSNode<T>* _right;
+	GenericBSNode<T>* _left;
+	GenericBSNode<T>* _right;
 
 	int _count; //for question 1 part B
-	int getCurrNodeDistFromInputNode(const BSNode<T>* node) const; //auxiliary function for getDepth
-	int getHeight(const BSNode<T>* root) const;
+	int getCurrNodeDistFromInputNode(const GenericBSNode<T>* node) const; //auxiliary function for getDepth
+	int getHeight(const GenericBSNode<T>* root) const;
 
 };
 #include "BSNode.h"
 #include <iostream>
 #define ERROR -1;
 template<class T>
-BSNode<T>::BSNode<T>(T data) :_data(data), _right(nullptr), _left(nullptr), _count(1)
+GenericBSNode<T>::GenericBSNode(T data) :_data(data), _right(nullptr), _left(nullptr), _count(1)
 {
 }
 template<class T>
-BSNode<T>::BSNode<T>(const BSNode<T>& other) :_data(other._data), _count(other._count)
+GenericBSNode<T>::GenericBSNode(const GenericBSNode<T>& other) :_data(other._data), _count(other._count)
 {
 	if (&other != nullptr)
 	{
@@ -61,13 +61,13 @@ BSNode<T>::BSNode<T>(const BSNode<T>& other) :_data(other._data), _count(other._
 	}
 }
 template<class T>
-BSNode<T>::~BSNode()
+GenericBSNode<T>::~GenericBSNode()
 {
 	delete _right;
 	delete _left;
 }
 template<class T>
-void BSNode<T>::insert(T value)
+void GenericBSNode<T>::insert(T value)
 {
 	if (value < _data)
 	{
@@ -94,39 +94,39 @@ void BSNode<T>::insert(T value)
 	return;
 }
 template<class T>
-BSNode<T>& BSNode<T>::operator=(const BSNode<T>& other)
+GenericBSNode<T>& GenericBSNode<T>::operator=(const GenericBSNode<T>& other)
 {
 
 	*this = BSNode(other);
 	return *this;
 }
 template<class T>
-bool BSNode<T>::isLeaf() const
+bool GenericBSNode<T>::isLeaf() const
 {
 	return _right == nullptr && _left == nullptr;
 }
 template<class T>
-std::string BSNode<T>::getData() const
+T GenericBSNode<T>::getData() const
 {
 	return _data;
 }
 template<class T>
-int BSNode<T>::getCount() const
+int GenericBSNode<T>::getCount() const
 {
 	return _count;
 }
 template<class T>
-BSNode<T>* BSNode<T>::getLeft() const
+GenericBSNode<T>* GenericBSNode<T>::getLeft() const
 {
 	return _left;
 }
 template<class T>
-BSNode<T>* BSNode<T>::getRight() const
+GenericBSNode<T>* GenericBSNode<T>::getRight() const
 {
 	return _right;
 }
 template<class T>
-bool BSNode<T>::search(T val) const
+bool GenericBSNode<T>::search(T val) const
 {
 	if (val == _data)
 		return true;
@@ -141,12 +141,12 @@ bool BSNode<T>::search(T val) const
 	return false;
 }
 template<class T>
-int BSNode<T>::getHeight() const
+int GenericBSNode<T>::getHeight() const
 {
 	return getHeight(this);
 }
 template<class T>
-int BSNode<T>::getDepth(const BSNode<T>& root) const
+int GenericBSNode<T>::getDepth(const GenericBSNode<T>& root) const
 {
 	try
 	{
@@ -159,7 +159,7 @@ int BSNode<T>::getDepth(const BSNode<T>& root) const
 
 }
 template<class T>
-void BSNode<T>::printNodes() const
+void GenericBSNode<T>::printNodes() const
 {
 	if (_left)
 	{
@@ -172,7 +172,7 @@ void BSNode<T>::printNodes() const
 	}
 }
 template<class T>
-int BSNode<T>::getCurrNodeDistFromInputNode(const BSNode<T>* node) const
+int GenericBSNode<T>::getCurrNodeDistFromInputNode(const GenericBSNode<T>* node) const
 {
 	if (node == nullptr)
 	{
@@ -186,7 +186,7 @@ int BSNode<T>::getCurrNodeDistFromInputNode(const BSNode<T>* node) const
 	return getCurrNodeDistFromInputNode(goTo) + 1;
 }
 template<class T>
-int BSNode<T>::getHeight(const BSNode* root) const
+int GenericBSNode<T>::getHeight(const GenericBSNode* root) const
 {
 	if (root == nullptr)
 	{
